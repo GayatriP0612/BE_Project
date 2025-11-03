@@ -363,3 +363,171 @@
 2025-10-30 14:29:37,254 - services.intent_agent.agent_orchestrator - INFO - Intent analysis completed in 0.46 seconds
 2025-10-30 14:29:37,255 - backend.app - INFO - Intent analysis completed successfully for query: Show me sales in Mumbai for last month...
 2025-10-30 14:29:37,257 - werkzeug - INFO - 127.0.0.1 - - [30/Oct/2025 14:29:37] "POST /api/intent HTTP/1.1" 200 -
+2025-11-02 09:44:20,245 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-11-02 09:44:20,654 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-11-02 09:44:26,195 - services.intent_agent.embedding_retriever - INFO - Loading Sentence-BERT model: all-MiniLM-L6-v2
+2025-11-02 09:44:26,199 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-11-02 09:44:26,200 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-02 09:44:31,416 - services.intent_agent.embedding_retriever - INFO - Model loaded successfully
+2025-11-02 09:44:31,417 - services.intent_agent.embedding_retriever - INFO - No existing index found. Creating new index.
+2025-11-02 09:44:31,666 - services.intent_agent.embedding_retriever - INFO - Created new FAISS index with dimension: 384
+2025-11-02 09:44:31,667 - services.intent_agent.entity_extractor - INFO - Loading spaCy model: en_core_web_sm
+2025-11-02 09:44:31,958 - services.intent_agent.entity_extractor - INFO - spaCy model loaded successfully
+2025-11-02 09:44:31,961 - services.intent_agent.classifier - INFO - Loaded workspace catalog with 6 workspaces
+2025-11-02 09:44:31,963 - services.intent_agent.schema_validator - INFO - Loaded schema definition from backend/services/intent_agent/config/intent_schema.json
+2025-11-02 09:44:31,964 - services.intent_agent.llm_mapper - INFO - Gemini API configured successfully
+2025-11-02 09:44:31,965 - services.intent_agent.llm_mapper - INFO - Loaded system prompt from backend/services/intent_agent/prompts/intent_system_prompt.txt
+2025-11-02 09:44:31,966 - services.intent_agent.llm_mapper - INFO - Loaded 7 few-shot examples
+2025-11-02 09:44:31,966 - services.intent_agent.agent_orchestrator - INFO - LLM mapper initialized successfully
+2025-11-02 09:44:31,967 - services.intent_agent.agent_orchestrator - INFO - Intent Agent Orchestrator initialized
+2025-11-02 09:44:32,086 - services.intent_agent.embedding_retriever - INFO - Added 10 texts to index. Total: 10
+2025-11-02 09:44:32,086 - services.intent_agent.embedding_retriever - INFO - Initialized index with sample data
+2025-11-02 09:44:32,087 - services.intent_agent.agent_orchestrator - INFO - Sample data initialization completed
+2025-11-02 09:44:32,087 - backend.app - INFO - Intent Agent orchestrator initialized successfully
+2025-11-02 09:44:32,143 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.8:5000
+2025-11-02 09:44:32,144 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-02 09:44:36,783 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:44:36] "GET / HTTP/1.1" 200 -
+2025-11-02 09:44:37,402 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:44:37] "GET /api/status HTTP/1.1" 200 -
+2025-11-02 09:44:37,410 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:44:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-02 09:44:47,309 - backend.app - INFO - Processing intent request for query: march sales in march...
+2025-11-02 09:44:47,311 - services.intent_agent.agent_orchestrator - INFO - Starting intent analysis for: march sales in march...
+2025-11-02 09:44:47,312 - services.intent_agent.context_validator - INFO - Validating context for: march sales in march...
+2025-11-02 09:44:47,332 - services.intent_agent.context_validator - WARNING - Context validation failed: Query contains redundant or contradictory temporal references, redundant or contradictory temporal references, month name appears redundantly. Please clarify your request.
+2025-11-02 09:44:47,333 - services.intent_agent.agent_orchestrator - WARNING - Context validation failed: Query contains redundant or contradictory temporal references, redundant or contradictory temporal references, month name appears redundantly. Please clarify your request.
+2025-11-02 09:44:47,335 - backend.app - WARNING - Context validation failed for query: march sales in march...
+2025-11-02 09:44:47,338 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:44:47] "[31m[1mPOST /api/intent HTTP/1.1[0m" 400 -
+2025-11-02 09:45:04,796 - backend.app - INFO - Processing intent request for query: car sales in march...
+2025-11-02 09:45:04,798 - services.intent_agent.agent_orchestrator - INFO - Starting intent analysis for: car sales in march...
+2025-11-02 09:45:04,798 - services.intent_agent.context_validator - INFO - Validating context for: car sales in march...
+2025-11-02 09:45:04,800 - services.intent_agent.agent_orchestrator - INFO - Context validation passed
+2025-11-02 09:45:04,801 - services.intent_agent.preprocessor - INFO - Preprocessing text: car sales in march...
+2025-11-02 09:45:07,044 - services.intent_agent.preprocessor - INFO - Detected language: en
+2025-11-02 09:45:07,047 - services.intent_agent.preprocessor - INFO - Preprocessing complete. Original length: 18, Final length: 18
+2025-11-02 09:45:07,049 - services.intent_agent.agent_orchestrator - INFO - Query preprocessed: 18 -> 18 chars
+2025-11-02 09:45:07,199 - services.intent_agent.embedding_retriever - INFO - Retrieved 3 similar queries
+2025-11-02 09:45:07,203 - services.intent_agent.agent_orchestrator - INFO - Retrieved 3 similar queries
+2025-11-02 09:45:07,204 - services.intent_agent.entity_extractor - INFO - Extracting entities from: car sales in march...
+2025-11-02 09:45:07,407 - services.intent_agent.entity_extractor - INFO - Extracted entities: dates: 1
+2025-11-02 09:45:07,409 - services.intent_agent.agent_orchestrator - INFO - Extracted entities: dates: 1
+2025-11-02 09:45:07,410 - services.intent_agent.classifier - INFO - Classifying intent type for: car sales in march...
+2025-11-02 09:45:07,411 - services.intent_agent.classifier - INFO - No clear intent pattern found, defaulting to 'read'
+2025-11-02 09:45:07,412 - services.intent_agent.agent_orchestrator - INFO - Predicted intent type: read
+2025-11-02 09:45:07,416 - services.intent_agent.classifier - INFO - Classifying workspace for: car sales in march...
+2025-11-02 09:45:07,420 - services.intent_agent.classifier - INFO - Found 6 relevant workspaces
+2025-11-02 09:45:07,421 - services.intent_agent.agent_orchestrator - INFO - Predicted 6 workspaces
+2025-11-02 09:45:07,426 - services.intent_agent.llm_mapper - INFO - Mapping intent with LLM for: car sales in march...
+2025-11-02 09:45:07,918 - services.intent_agent.llm_mapper - ERROR - Gemini API call failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:45:07,919 - services.intent_agent.llm_mapper - ERROR - LLM mapping failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:45:07,920 - services.intent_agent.llm_mapper - WARNING - Creating fallback intent data
+2025-11-02 09:45:07,921 - services.intent_agent.agent_orchestrator - INFO - LLM mapping completed successfully
+2025-11-02 09:45:07,932 - services.intent_agent.schema_validator - INFO - Intent data validated successfully
+2025-11-02 09:45:07,940 - services.intent_agent.agent_orchestrator - INFO - Schema validation completed successfully
+2025-11-02 09:45:07,941 - services.intent_agent.agent_orchestrator - INFO - Intent analysis completed in 3.14 seconds
+2025-11-02 09:45:07,943 - backend.app - INFO - Intent analysis completed successfully for query: car sales in march...
+2025-11-02 09:45:07,948 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:45:07] "POST /api/intent HTTP/1.1" 200 -
+2025-11-02 09:45:25,314 - backend.app - INFO - Processing intent request for query: car sales in car...
+2025-11-02 09:45:25,316 - services.intent_agent.agent_orchestrator - INFO - Starting intent analysis for: car sales in car...
+2025-11-02 09:45:25,317 - services.intent_agent.context_validator - INFO - Validating context for: car sales in car...
+2025-11-02 09:45:25,319 - services.intent_agent.context_validator - WARNING - Context validation failed: Query contains redundant or contradictory temporal references. Please clarify your request.
+2025-11-02 09:45:25,321 - services.intent_agent.agent_orchestrator - WARNING - Context validation failed: Query contains redundant or contradictory temporal references. Please clarify your request.
+2025-11-02 09:45:25,322 - backend.app - WARNING - Context validation failed for query: car sales in car...
+2025-11-02 09:45:25,324 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:45:25] "[31m[1mPOST /api/intent HTTP/1.1[0m" 400 -
+2025-11-02 09:45:43,066 - backend.app - INFO - Processing intent request for query: car sales in march and april...
+2025-11-02 09:45:43,068 - services.intent_agent.agent_orchestrator - INFO - Starting intent analysis for: car sales in march and april...
+2025-11-02 09:45:43,069 - services.intent_agent.context_validator - INFO - Validating context for: car sales in march and april...
+2025-11-02 09:45:43,070 - services.intent_agent.agent_orchestrator - INFO - Context validation passed
+2025-11-02 09:45:43,071 - services.intent_agent.preprocessor - INFO - Preprocessing text: car sales in march and april...
+2025-11-02 09:45:43,085 - services.intent_agent.preprocessor - INFO - Detected language: en
+2025-11-02 09:45:43,086 - services.intent_agent.preprocessor - INFO - Preprocessing complete. Original length: 28, Final length: 28
+2025-11-02 09:45:43,087 - services.intent_agent.agent_orchestrator - INFO - Query preprocessed: 28 -> 28 chars
+2025-11-02 09:45:43,134 - services.intent_agent.embedding_retriever - INFO - Retrieved 3 similar queries
+2025-11-02 09:45:43,135 - services.intent_agent.agent_orchestrator - INFO - Retrieved 3 similar queries
+2025-11-02 09:45:43,135 - services.intent_agent.entity_extractor - INFO - Extracting entities from: car sales in march and april...
+2025-11-02 09:45:43,160 - services.intent_agent.entity_extractor - INFO - Extracted entities: dates: 2
+2025-11-02 09:45:43,160 - services.intent_agent.agent_orchestrator - INFO - Extracted entities: dates: 2
+2025-11-02 09:45:43,163 - services.intent_agent.classifier - INFO - Classifying intent type for: car sales in march and april...
+2025-11-02 09:45:43,164 - services.intent_agent.classifier - INFO - No clear intent pattern found, defaulting to 'read'
+2025-11-02 09:45:43,164 - services.intent_agent.agent_orchestrator - INFO - Predicted intent type: read
+2025-11-02 09:45:43,165 - services.intent_agent.classifier - INFO - Classifying workspace for: car sales in march and april...
+2025-11-02 09:45:43,167 - services.intent_agent.classifier - INFO - Found 6 relevant workspaces
+2025-11-02 09:45:43,168 - services.intent_agent.agent_orchestrator - INFO - Predicted 6 workspaces
+2025-11-02 09:45:43,168 - services.intent_agent.llm_mapper - INFO - Mapping intent with LLM for: car sales in march and april...
+2025-11-02 09:45:43,296 - services.intent_agent.llm_mapper - ERROR - Gemini API call failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:45:43,297 - services.intent_agent.llm_mapper - ERROR - LLM mapping failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:45:43,298 - services.intent_agent.llm_mapper - WARNING - Creating fallback intent data
+2025-11-02 09:45:43,299 - services.intent_agent.agent_orchestrator - INFO - LLM mapping completed successfully
+2025-11-02 09:45:43,300 - services.intent_agent.schema_validator - INFO - Intent data validated successfully
+2025-11-02 09:45:43,301 - services.intent_agent.agent_orchestrator - INFO - Schema validation completed successfully
+2025-11-02 09:45:43,302 - services.intent_agent.agent_orchestrator - INFO - Intent analysis completed in 0.23 seconds
+2025-11-02 09:45:43,303 - backend.app - INFO - Intent analysis completed successfully for query: car sales in march and april...
+2025-11-02 09:45:43,304 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:45:43] "POST /api/intent HTTP/1.1" 200 -
+2025-11-02 09:46:17,213 - backend.app - INFO - Processing intent request for query: march sales in april...
+2025-11-02 09:46:17,215 - services.intent_agent.agent_orchestrator - INFO - Starting intent analysis for: march sales in april...
+2025-11-02 09:46:17,215 - services.intent_agent.context_validator - INFO - Validating context for: march sales in april...
+2025-11-02 09:46:17,217 - services.intent_agent.agent_orchestrator - INFO - Context validation passed
+2025-11-02 09:46:17,218 - services.intent_agent.preprocessor - INFO - Preprocessing text: march sales in april...
+2025-11-02 09:46:17,256 - services.intent_agent.preprocessor - INFO - Detected language: en
+2025-11-02 09:46:17,257 - services.intent_agent.preprocessor - INFO - Preprocessing complete. Original length: 20, Final length: 20
+2025-11-02 09:46:17,257 - services.intent_agent.agent_orchestrator - INFO - Query preprocessed: 20 -> 20 chars
+2025-11-02 09:46:17,303 - services.intent_agent.embedding_retriever - INFO - Retrieved 3 similar queries
+2025-11-02 09:46:17,303 - services.intent_agent.agent_orchestrator - INFO - Retrieved 3 similar queries
+2025-11-02 09:46:17,304 - services.intent_agent.entity_extractor - INFO - Extracting entities from: march sales in april...
+2025-11-02 09:46:17,325 - services.intent_agent.entity_extractor - INFO - Extracted entities: dates: 2
+2025-11-02 09:46:17,326 - services.intent_agent.agent_orchestrator - INFO - Extracted entities: dates: 2
+2025-11-02 09:46:17,326 - services.intent_agent.classifier - INFO - Classifying intent type for: march sales in april...
+2025-11-02 09:46:17,327 - services.intent_agent.classifier - INFO - No clear intent pattern found, defaulting to 'read'
+2025-11-02 09:46:17,328 - services.intent_agent.agent_orchestrator - INFO - Predicted intent type: read
+2025-11-02 09:46:17,328 - services.intent_agent.classifier - INFO - Classifying workspace for: march sales in april...
+2025-11-02 09:46:17,331 - services.intent_agent.classifier - INFO - Found 6 relevant workspaces
+2025-11-02 09:46:17,332 - services.intent_agent.agent_orchestrator - INFO - Predicted 6 workspaces
+2025-11-02 09:46:17,333 - services.intent_agent.llm_mapper - INFO - Mapping intent with LLM for: march sales in april...
+2025-11-02 09:46:17,548 - services.intent_agent.llm_mapper - ERROR - Gemini API call failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:46:17,549 - services.intent_agent.llm_mapper - ERROR - LLM mapping failed: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-11-02 09:46:17,550 - services.intent_agent.llm_mapper - WARNING - Creating fallback intent data
+2025-11-02 09:46:17,550 - services.intent_agent.agent_orchestrator - INFO - LLM mapping completed successfully
+2025-11-02 09:46:17,551 - services.intent_agent.schema_validator - INFO - Intent data validated successfully
+2025-11-02 09:46:17,551 - services.intent_agent.agent_orchestrator - INFO - Schema validation completed successfully
+2025-11-02 09:46:17,552 - services.intent_agent.agent_orchestrator - INFO - Intent analysis completed in 0.34 seconds
+2025-11-02 09:46:17,553 - backend.app - INFO - Intent analysis completed successfully for query: march sales in april...
+2025-11-02 09:46:17,555 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 09:46:17] "POST /api/intent HTTP/1.1" 200 -
+2025-11-02 19:49:34,202 - faiss.loader - INFO - Loading faiss with AVX2 support.
+2025-11-02 19:49:34,580 - faiss.loader - INFO - Successfully loaded faiss with AVX2 support.
+2025-11-02 19:49:38,525 - services.intent_agent.embedding_retriever - INFO - Loading Sentence-BERT model: all-MiniLM-L6-v2
+2025-11-02 19:49:38,528 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-11-02 19:49:38,528 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-11-02 19:49:42,411 - services.intent_agent.embedding_retriever - INFO - Model loaded successfully
+2025-11-02 19:49:42,413 - services.intent_agent.embedding_retriever - INFO - No existing index found. Creating new index.
+2025-11-02 19:49:42,559 - services.intent_agent.embedding_retriever - INFO - Created new FAISS index with dimension: 384
+2025-11-02 19:49:42,560 - services.intent_agent.entity_extractor - INFO - Loading spaCy model: en_core_web_sm
+2025-11-02 19:49:42,791 - services.intent_agent.entity_extractor - INFO - spaCy model loaded successfully
+2025-11-02 19:49:42,815 - services.intent_agent.classifier - INFO - Loaded workspace catalog with 6 workspaces
+2025-11-02 19:49:42,839 - services.intent_agent.schema_validator - INFO - Loaded schema definition from backend/services/intent_agent/config/intent_schema.json
+2025-11-02 19:49:42,840 - services.intent_agent.llm_mapper - INFO - Gemini API configured successfully
+2025-11-02 19:49:42,865 - services.intent_agent.llm_mapper - INFO - Loaded system prompt from backend/services/intent_agent/prompts/intent_system_prompt.txt
+2025-11-02 19:49:42,869 - services.intent_agent.llm_mapper - INFO - Loaded 7 few-shot examples
+2025-11-02 19:49:42,869 - services.intent_agent.agent_orchestrator - INFO - LLM mapper initialized successfully
+2025-11-02 19:49:42,869 - services.intent_agent.agent_orchestrator - INFO - Intent Agent Orchestrator initialized
+2025-11-02 19:49:42,920 - services.intent_agent.embedding_retriever - INFO - Added 10 texts to index. Total: 10
+2025-11-02 19:49:42,921 - services.intent_agent.embedding_retriever - INFO - Initialized index with sample data
+2025-11-02 19:49:42,921 - services.intent_agent.agent_orchestrator - INFO - Sample data initialization completed
+2025-11-02 19:49:42,921 - backend.app - INFO - Intent Agent orchestrator initialized successfully
+2025-11-02 19:49:42,933 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.29.159:5000
+2025-11-02 19:49:42,933 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-02 19:51:16,363 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:16] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:16,412 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-02 19:51:26,017 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:26] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:26,973 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:26] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:27,597 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:27] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:27,818 - werkzeug - INFO - 127.0.0.1 - - [02/Nov/2025 19:51:27] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:41,975 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:41] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:42,053 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-02 19:51:44,814 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:44] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:45,040 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:45] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:45,263 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:45] "GET / HTTP/1.1" 200 -
+2025-11-02 19:51:45,489 - werkzeug - INFO - 192.168.29.159 - - [02/Nov/2025 19:51:45] "GET / HTTP/1.1" 200 -

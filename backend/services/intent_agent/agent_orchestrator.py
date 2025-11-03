@@ -19,6 +19,7 @@ from .entity_extractor import EntityExtractor
 from .classifier import IntentClassifier
 from .llm_mapper import LLMMapper
 from .schema_validator import SchemaValidator
+from .context_validator import ContextValidator
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -50,6 +51,7 @@ class IntentAgentOrchestrator:
         self.entity_extractor = EntityExtractor()
         self.classifier = IntentClassifier(workspace_catalog_path=workspace_catalog_path)
         self.schema_validator = SchemaValidator()
+        self.context_validator = ContextValidator()
         
         # Initialize LLM mapper (may fail if API key not provided)
         try:
@@ -66,6 +68,7 @@ class IntentAgentOrchestrator:
         self.enable_similarity_retrieval = True
         self.enable_entity_extraction = True
         self.enable_classification = True
+        self.enable_context_validation = True
         
         self.logger.info("Intent Agent Orchestrator initialized")
     
@@ -86,6 +89,14 @@ class IntentAgentOrchestrator:
         self.logger.info(f"Starting intent analysis for: {user_query[:100]}...")
         
         try:
+            # Step 0: Validate context (check if query makes sense)
+            if self.enable_context_validation:
+                validation_result = self._validate_context(user_query)
+                if not validation_result['is_valid']:
+                    return self._create_context_error_response(
+                        validation_result, user_query, start_time
+                    )
+            
             # Step 1: Preprocess the query
             processed_query = self._preprocess_query(user_query)
             
@@ -127,6 +138,20 @@ class IntentAgentOrchestrator:
         except Exception as e:
             self.logger.error(f"Intent analysis failed: {str(e)}")
             return self._create_error_response(f"Intent analysis failed: {str(e)}")
+    
+    def _validate_context(self, user_query: str) -> Dict[str, Any]:
+        """Validate the context of the user query."""
+        try:
+            validation_result = self.context_validator.validate_context(user_query)
+            if validation_result['is_valid']:
+                self.logger.info("Context validation passed")
+            else:
+                self.logger.warning(f"Context validation failed: {validation_result['message']}")
+            return validation_result
+        except Exception as e:
+            self.logger.warning(f"Context validation failed: {str(e)}, proceeding with query")
+            # If validation fails due to error, proceed with query
+            return {'is_valid': True, 'message': 'Validation error, proceeding'}
     
     def _preprocess_query(self, user_query: str) -> str:
         """Preprocess the user query."""
@@ -280,6 +305,7 @@ class IntentAgentOrchestrator:
                 'timestamp': datetime.now().isoformat(),
                 'pipeline_components': {
                     'preprocessing': True,
+                    'context_validation': self.enable_context_validation,
                     'embedding_retrieval': self.enable_similarity_retrieval,
                     'entity_extraction': self.enable_entity_extraction,
                     'classification': self.enable_classification,
@@ -291,6 +317,48 @@ class IntentAgentOrchestrator:
         }
         
         return response
+    
+    def _create_context_error_response(self, 
+                                      validation_result: Dict[str, Any],
+                                      user_query: str,
+                                      start_time: datetime) -> Dict[str, Any]:
+        """Create error response for context validation failures."""
+        processing_time = (datetime.now() - start_time).total_seconds()
+        
+        return {
+            'intent_analysis': {
+                'intent_type': 'read',
+                'workspaces': ['sales'],
+                'entities': {
+                    'dates': [], 'locations': [], 'quantities': [], 'products': [],
+                    'organizations': [], 'people': [], 'custom': {}
+                },
+                'confidence': validation_result.get('confidence', 0.0),
+                'rationale': f"Context validation failed: {validation_result.get('message', 'Unknown error')}",
+                'query_type': 'invalid',
+                'time_sensitivity': 'historical',
+                'validation_issues': validation_result.get('issues', [])
+            },
+            'metadata': {
+                'error': True,
+                'error_type': 'context_validation_failed',
+                'error_message': validation_result.get('message', 'Query contains logical inconsistencies'),
+                'validation_issues': validation_result.get('issues', []),
+                'original_query': user_query,
+                'processing_time_seconds': round(processing_time, 3),
+                'timestamp': datetime.now().isoformat(),
+                'pipeline_components': {
+                    'preprocessing': False,
+                    'context_validation': True,
+                    'embedding_retrieval': False,
+                    'entity_extraction': False,
+                    'classification': False,
+                    'llm_mapping': False,
+                    'schema_validation': False
+                },
+                'version': '1.0.0'
+            }
+        }
     
     def _create_error_response(self, error_message: str) -> Dict[str, Any]:
         """Create error response."""
@@ -329,6 +397,7 @@ class IntentAgentOrchestrator:
         """Get the status of all pipeline components."""
         return {
             'preprocessing': True,
+            'context_validation': self.enable_context_validation,
             'embedding_retrieval': self.enable_similarity_retrieval,
             'entity_extraction': self.enable_entity_extraction,
             'classification': self.enable_classification,
